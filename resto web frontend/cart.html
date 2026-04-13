@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart & Checkout | Savora</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .page-header {
+            padding: 8rem 0 4rem;
+            text-align: center;
+            background-color: var(--secondary-bg);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .checkout-container {
+            padding: 4rem 0;
+            display: grid;
+            grid-template-columns: 3fr 2fr;
+            gap: 40px;
+        }
+
+        .cart-list {
+            background-color: var(--secondary-bg);
+            padding: 30px;
+            border-radius: 8px;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+
+        .cart-item-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .cart-item-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        .qty-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background-color: var(--primary-bg);
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+        
+        .qty-control button {
+            background: none;
+            color: var(--text-light);
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        .checkout-form {
+            background-color: var(--secondary-bg);
+            padding: 30px;
+            border-radius: 8px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-muted);
+        }
+
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--primary-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-light);
+            border-radius: 4px;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .summary-total {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--accent);
+            border-top: 1px solid var(--border-color);
+            padding-top: 15px;
+            margin-top: 15px;
+        }
+
+        .empty-cart-msg {
+            text-align: center;
+            padding: 30px;
+            color: var(--text-muted);
+        }
+
+        @media (max-width: 900px) {
+            .checkout-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 500px) {
+            .cart-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            .cart-item-actions {
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="brand">Savora.</a>
+            <button class="hamburger">☰</button>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="menu.html">Menu</a>
+                <a href="about.html">About</a>
+                <a href="cart.html" style="color: var(--accent);" class="cart-icon">🛒 <span class="cart-count">0</span></a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="page-header gsap-fade-up">
+        <h1 class="section-title" style="margin-bottom: 0;">Checkout</h1>
+    </header>
+
+    <section class="checkout-container container">
+        
+        <div class="cart-list gsap-fade-up">
+            <h2 style="margin-bottom: 20px;">Your Cart</h2>
+            <div id="cart-items">
+                <!-- JS Rendered -->
+            </div>
+        </div>
+
+        <div class="checkout-form gsap-fade-up" style="transition-delay: 0.2s;">
+            <h2 style="margin-bottom: 20px;">Order Summary</h2>
+            
+            <div id="cart-summary">
+                <div class="summary-row"><span>Subtotal</span> <span id="subtotal">₹0.00</span></div>
+                <div class="summary-row"><span>Taxes (5%)</span> <span id="taxes">₹0.00</span></div>
+                <div class="summary-row summary-total"><span>Total</span> <span id="total">₹0.00</span></div>
+            </div>
+
+            <hr style="border: none; border-top: 1px solid var(--border-color); margin: 30px 0;">
+            
+            <h2 style="margin-bottom: 20px;">Delivery Info</h2>
+            <form id="checkout-form-elem" onsubmit="event.preventDefault(); submitOrder();">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" required placeholder="John Doe">
+                </div>
+                <div class="form-group">
+                    <label>Delivery Address</label>
+                    <textarea rows="3" required placeholder="123 Main St, Apt 4..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Payment Method</label>
+                    <select required>
+                        <option value="card">Credit/Debit Card</option>
+                        <option value="upi">UPI</option>
+                        <option value="cod">Cash on Delivery</option>
+                    </select>
+                </div>
+                <!-- Card details mocked for UI only -->
+                <div class="form-group" id="card-details">
+                    <label>Card Number</label>
+                    <input type="text" placeholder="XXXX-XXXX-XXXX-XXXX">
+                </div>
+                <button type="submit" class="btn" style="width: 100%; margin-top: 20px; font-size: 1.2rem; padding: 15px;">Place Order</button>
+            </form>
+        </div>
+
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <!-- Exact same footer -->
+        <div class="container footer-content">
+            <div class="footer-col">
+                <h2 class="brand">Savora.</h2>
+                <p>Taste the extraordinary.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Explore</h4>
+                <a href="index.html">Home</a>
+                <a href="menu.html">Menu</a>
+                <a href="about.html">About Us</a>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <p>123 Culinary Blvd, NY</p>
+                <p>hello@savora.com</p>
+                <p>+1 (555) 123-4567</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        function renderCart() {
+            const container = document.getElementById('cart-items');
+            if(cart.length === 0) {
+                container.innerHTML = '<div class="empty-cart-msg">Your cart is empty. <a href="menu.html" style="color:var(--accent); text-decoration:underline;">Browse Menu</a></div>';
+                document.getElementById('checkout-form-elem').style.display = 'none';
+                document.getElementById('subtotal').innerText = '₹0.00';
+                document.getElementById('taxes').innerText = '₹0.00';
+                document.getElementById('total').innerText = '₹0.00';
+                return;
+            }
+
+            document.getElementById('checkout-form-elem').style.display = 'block';
+            container.innerHTML = '';
+            
+            let subtotal = 0;
+
+            cart.forEach(item => {
+                subtotal += item.price * item.quantity;
+                const div = document.createElement('div');
+                div.className = 'cart-item';
+                div.innerHTML = `
+                    <div class="cart-item-info">
+                        <img src="${item.image}" alt="${item.name}" class="cart-item-img">
+                        <div>
+                            <h4 style="font-family: 'Playfair Display', serif; font-size: 1.2rem;">${item.name}</h4>
+                            <p style="color: var(--text-muted);">₹${item.price}</p>
+                        </div>
+                    </div>
+                    <div class="cart-item-actions">
+                        <div class="qty-control">
+                            <button onclick="updateQuantity('${item.id}', -1)">-</button>
+                            <span>${item.quantity}</span>
+                            <button onclick="updateQuantity('${item.id}', 1)">+</button>
+                        </div>
+                        <div style="font-weight: bold; margin-left: 20px;">₹${item.price * item.quantity}</div>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+
+            const taxes = subtotal * 0.05;
+            const total = subtotal + taxes;
+
+            document.getElementById('subtotal').innerText = `₹${subtotal.toFixed(2)}`;
+            document.getElementById('taxes').innerText = `₹${taxes.toFixed(2)}`;
+            document.getElementById('total').innerText = `₹${total.toFixed(2)}`;
+        }
+
+        function submitOrder() {
+            if(cart.length === 0) return;
+            alert("Payment Successful! Your order has been placed. (Mock UI)");
+            localStorage.removeItem('savora_cart');
+            cart = [];
+            updateCartCount();
+            renderCart();
+        }
+
+        renderCart();
+    </script>
+</body>
+</html>

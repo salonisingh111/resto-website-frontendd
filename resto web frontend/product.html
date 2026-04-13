@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details | Savora</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .product-section {
+            padding: 8rem 0 4rem;
+        }
+
+        .product-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: flex-start;
+        }
+
+        .product-img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            object-fit: cover;
+            max-height: 500px;
+        }
+
+        .product-info h1 {
+            font-size: 2.8rem;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+
+        .product-meta {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .product-meta span {
+            background-color: var(--secondary-bg);
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        .product-desc {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+
+        .product-price {
+            font-size: 2rem;
+            font-family: 'Playfair Display', serif;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+
+        .add-to-cart-widget {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .qty-selector {
+            display: flex;
+            align-items: center;
+            background-color: var(--secondary-bg);
+            border-radius: 4px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        .qty-btn {
+            background: none;
+            border: none;
+            color: var(--text-light);
+            width: 40px;
+            height: 48px;
+            font-size: 1.2rem;
+        }
+
+        .qty-btn:hover {
+            background-color: var(--primary-bg);
+        }
+
+        .qty-input {
+            width: 50px;
+            text-align: center;
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 1.1rem;
+            font-weight: bold;
+            pointer-events: none;
+        }
+
+        .reviews {
+            margin-top: 5rem;
+            border-top: 1px solid var(--border-color);
+            padding-top: 3rem;
+        }
+
+        .review-card {
+            background-color: var(--secondary-bg);
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .review-card .stars {
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .product-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="brand">Savora.</a>
+            <button class="hamburger">☰</button>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="menu.html">Menu</a>
+                <a href="about.html">About</a>
+                <a href="cart.html" class="cart-icon">🛒 <span class="cart-count">0</span></a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="product-section container">
+        <div class="product-container" id="product-container">
+            <!-- Rendered via JS -->
+            <div style="height: 500px; display:flex; align-items:center; justify-content:center;">Loading...</div>
+        </div>
+
+        <div class="reviews gsap-fade-up">
+            <h2 class="section-title" style="text-align: left; margin-bottom: 2rem;">Customer Reviews</h2>
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <h4>Absolutely Divine</h4>
+                <p style="color: var(--text-muted); margin-top: 10px;">"The quality of ingredients really shines through. Worth every penny."</p>
+                <small style="color: var(--text-muted); display: block; margin-top: 10px;">- Jonathan D.</small>
+            </div>
+            <div class="review-card">
+                <div class="stars">★★★★☆</div>
+                <h4>Great taste, excellent presentation</h4>
+                <p style="color: var(--text-muted); margin-top: 10px;">"Delivered perfectly to my home. A truly premium online ordering experience."</p>
+                <small style="color: var(--text-muted); display: block; margin-top: 10px;">- Sarah M.</small>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-col">
+                <h2 class="brand">Savora.</h2>
+                <p>Taste the extraordinary.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Explore</h4>
+                <a href="index.html">Home</a>
+                <a href="menu.html">Menu</a>
+                <a href="about.html">About Us</a>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <p>123 Culinary Blvd, NY</p>
+                <p>hello@savora.com</p>
+                <p>+1 (555) 123-4567</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        let productId = params.get('id') || 'm1'; // Default to m1 if none provided
+        // Use global productsDB from script.js
+        const product = productsDB.find(p => p.id === productId) || productsDB.find(p => p.id === 'm1');
+
+        let qty = 1;
+
+        function renderProduct() {
+            const container = document.getElementById('product-container');
+            container.innerHTML = `
+                <div class="gsap-fade-up">
+                    <img src="${product.img}" alt="${product.name}" class="product-img">
+                </div>
+                <div class="product-info gsap-fade-up" style="transition-delay: 0.2s">
+                    <h1>${product.name}</h1>
+                    <div class="product-meta">
+                        <span>🔥 ${product.calories}</span>
+                        <span>🥗 ${product.type}</span>
+                    </div>
+                    <p class="product-desc">${product.desc}</p>
+                    <div class="product-price">₹${product.price}</div>
+                    
+                    <div class="add-to-cart-widget">
+                        <div class="qty-selector">
+                            <button class="qty-btn" onclick="updateLocalQty(-1)">-</button>
+                            <input type="text" class="qty-input" id="curr-qty" value="${qty}">
+                            <button class="qty-btn" onclick="updateLocalQty(1)">+</button>
+                        </div>
+                        <button class="btn" style="padding: 15px 40px; font-size: 1.1rem;" onclick="addCurrentToCart()">Add to Cart 🛒</button>
+                    </div>
+                    
+                    <hr style="border: none; border-top: 1px solid var(--border-color); margin-bottom: 20px;">
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">* Contains allergens. Please let us know of any dietary requirements.</p>
+                </div>
+            `;
+        }
+
+        function updateLocalQty(change) {
+            if (qty + change >= 1) {
+                qty += change;
+                document.getElementById('curr-qty').value = qty;
+            }
+        }
+
+        function addCurrentToCart() {
+            addToCart({
+                id: productId,
+                name: product.name,
+                price: product.price,
+                image: product.img,
+                quantity: qty
+            });
+        }
+
+        renderProduct();
+    </script>
+</body>
+</html>

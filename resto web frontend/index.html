@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Savora | Discover restaurant & food</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    
+    <style>
+        /* Savora Luxury Home Page Styles */
+        .hero-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 85vh;
+            padding: 120px 0 50px;
+            overflow: hidden;
+        }
+
+        .hero-left {
+            flex: 1;
+            padding-right: 50px;
+        }
+
+        .hero-left h1 {
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 24px;
+        }
+
+        .hero-left h1 span {
+            color: var(--accent);
+            font-style: italic;
+        }
+
+        .hero-left p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            max-width: 500px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 20px;
+        }
+
+        .hero-right {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        /* Circular Image Carousel Component */
+        .carousel-container {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: var(--accent);
+            padding: 10px;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .carousel-track-wrapper {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .carousel-track {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        /* Floating Tags */
+        .floating-tag {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 12px 20px;
+            border-radius: 30px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .floating-tag.tag-1 {
+            top: 20px;
+            right: -20px;
+        }
+
+        .floating-tag.tag-2 {
+            bottom: 40px;
+            left: -40px;
+        }
+
+        .tag-icon {
+            font-size: 1.5rem;
+        }
+        
+        .tag-text {
+            font-family: 'Outfit';
+            font-weight: 600;
+            color: var(--text-dark);
+            font-size: 0.95rem;
+        }
+
+        /* Featured Grid */
+        .featured-section {
+            padding: 80px 0;
+            background-color: var(--secondary-bg);
+            border-radius: var(--radius-lg);
+            margin-bottom: 50px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .feature-card {
+            background: var(--text-dark);
+            color: var(--primary-bg);
+            padding: 45px 30px;
+            border-radius: var(--radius-md);
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: 0 15px 35px rgba(18, 33, 23, 0.2);
+            border: 1px solid rgba(176, 125, 62, 0.15); /* Subtle gold border */
+            position: relative;
+            z-index: 1;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 45px rgba(18, 33, 23, 0.3), 0 0 15px rgba(176, 125, 62, 0.1); 
+            border-color: rgba(176, 125, 62, 0.4);
+        }
+
+        .feature-icon {
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .feature-icon svg {
+            width: 48px;
+            height: 48px;
+            stroke: var(--accent);
+            stroke-width: 1.2;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        
+        .feature-card h3 {
+            color: var(--accent);
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            letter-spacing: 0.5px;
+        }
+        
+        .feature-card p {
+            color: rgba(252, 250, 239, 0.75);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin: 0;
+        }
+
+        @media (max-width: 900px) {
+            .hero-section {
+                flex-direction: column;
+                text-align: center;
+                padding-top: 150px;
+            }
+            .hero-left {
+                padding-right: 0;
+                margin-bottom: 50px;
+            }
+            .hero-left p {
+                margin: 0 auto 30px;
+            }
+            .hero-actions {
+                justify-content: center;
+            }
+            .carousel-container {
+                width: 320px;
+                height: 320px;
+            }
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="brand">Savora<span>.</span></a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="about.html">About</a></li>
+                <li>
+                    <a href="cart.html" class="cart-icon">
+                        🛒 <span class="cart-count">0</span>
+                    </a>
+                </li>
+            </ul>
+            <button class="hamburger">☰</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <main>
+        <div class="container hero-section">
+            <div class="hero-left gsap-hero-left">
+                <h1>Experience <br><span>Authentic</span> Indian Dining</h1>
+                <p>Immerse yourself in a journey of exquisite flavors and vibrant spices. From rich curries to tandoori delights, savor every bite.</p>
+                <div class="hero-actions">
+                    <a href="menu.html" class="btn">Explore Menu</a>
+                    <a href="about.html" class="btn outline">Our Story</a>
+                </div>
+            </div>
+            
+            <div class="hero-right gsap-hero-right">
+                <div class="floating-tag tag-1 gsap-float-1">
+                    <span class="tag-icon">⭐</span>
+                    <span class="tag-text">4.9 Rated</span>
+                </div>
+                
+                <div class="carousel-container" id="hero-carousel">
+                    <div class="carousel-track-wrapper">
+                        <div class="carousel-track" id="track">
+                            <div class="carousel-slide">
+                                <img src="https://images.pexels.com/photos/1633525/pexels-photo-1633525.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Biryani">
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="https://images.pexels.com/photos/33162/food-restaurant-menu-asia.jpg?auto=compress&cs=tinysrgb&w=800" alt="Butter Chicken">
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="https://images.pexels.com/photos/2474661/pexels-photo-2474661.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Samosa">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="floating-tag tag-2 gsap-float-2">
+                    <span class="tag-icon">🔥</span>
+                    <span class="tag-text">Hot & Fresh</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- About Our Resto Section -->
+        <section class="container gsap-fade-up" style="margin-bottom: 100px; display: flex; align-items: center; gap: 60px; flex-wrap: wrap;">
+            <div style="flex: 1; min-width: 320px; position: relative;">
+                <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=80&w=1200" alt="Luxury Resto Interior" style="width: 100%; height: 450px; object-fit: cover; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);">
+                <div class="glass" style="position: absolute; bottom: -30px; right: -30px; padding: 25px; border-radius: var(--radius-md); text-align: center;">
+                    <h4 style="color: var(--accent); font-size: 2rem; margin-bottom: 5px;">25+</h4>
+                    <p style="font-size: 0.95rem; font-weight: 600;">Years of Culinary<br>Excellence</p>
+                </div>
+            </div>
+            <div style="flex: 1; min-width: 320px; padding: 20px 0;">
+                <h2 class="section-title" style="text-align: left; margin-bottom: 25px;">This is Our Resto</h2>
+                <h3 style="color: var(--accent); font-size: 1.4rem; margin-bottom: 20px; font-style: italic;">Where Tradition Meets Luxury.</h3>
+                <p style="margin-bottom: 25px; color: var(--text-muted); font-size: 1.1rem; line-height: 1.9;">
+                    Nestled in the heart of the city, Savora is a luxurious escape into the rich tapestry of authentic Indian cuisine. Our award-winning establishment was curated to offer more than just food—we offer a genuinely royal dining experience.
+                </p>
+                <p style="margin-bottom: 40px; color: var(--text-muted); font-size: 1.1rem; line-height: 1.9;">
+                    Every dish is a masterpiece, crafted using hand-picked spices from authentic farms and generations-old recipes. Experience dining that captivates your senses in an ambiance designed for elegance.
+                </p>
+                <a href="about.html" class="btn">Discover Our Story</a>
+            </div>
+        </section>
+
+        <!-- Chef's Recommendations -->
+        <section class="container gsap-fade-up" style="margin-bottom: 100px;">
+            <h2 class="section-title">Chef's Recommendations</h2>
+            <div id="homepage-dishes" class="luxury-menu-grid">
+                <!-- Javascript will populate 3 featured luxury dishes here -->
+            </div>
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="menu.html" class="btn outline">View Full Menu</a>
+            </div>
+        </section>
+
+        <!-- Featured / Why Us -->
+        <div class="container">
+            <section class="featured-section gsap-fade-up">
+                <h2 class="section-title">The Savora Difference</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+                        </div>
+                        <h3>Fresh Ingredients</h3>
+                        <p>We source the highest quality, farm-fresh produce daily to ensure the perfect taste.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 13.87A4 4 0 0 1 7.41 6a5.11 5.11 0 0 1 1.05-1.54 5 5 0 0 1 7.08 0A5.11 5.11 0 0 1 16.59 6 4 4 0 0 1 18 13.87V21H6Z"/><line x1="6" y1="17" x2="18" y2="17"/></svg>
+                        </div>
+                        <h3>Master Chefs</h3>
+                        <p>Our culinary experts bring generations of authentic recipes and techniques to your table.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        </div>
+                        <h3>Fast Delivery</h3>
+                        <p>Enjoy luxury dining from the comfort of your home, delivered hot and fresh every time.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Sticky Floating Cart & Payment Modal -->
+    <div id="floating-cart" class="floating-cart-bar">
+        <div class="cart-info-flex">
+            <span style="font-size: 1.5rem;">🛍️</span>
+            <div>
+                <div style="font-size: 0.9rem; color: var(--text-muted);">Your Order (<span id="float-cart-count">0</span> items)</div>
+                <div class="cart-total-price">₹<span id="float-cart-total">0</span></div>
+            </div>
+        </div>
+        <button class="btn" onclick="processPayment()">Pay Now</button>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-content" style="display:flex; justify-content:space-between; flex-wrap:wrap; text-align:left; gap:40px;">
+            <div class="footer-col" style="flex: 2; min-width: 250px;">
+                <h2 class="brand">Savora<span>.</span></h2>
+                <p style="margin-top: 20px; max-width: 300px;">Elevating the standard of authentic Indian dining. Explore unforgettable flavors and rich culinary heritage.</p>
+            </div>
+            <div class="footer-col" style="flex: 1; min-width: 150px;">
+                <h4>Quick Links</h4>
+                <a href="index.html" style="display:block; margin-bottom:10px;">Home</a>
+                <a href="menu.html" style="display:block; margin-bottom:10px;">Menu</a>
+                <a href="about.html" style="display:block; margin-bottom:10px;">About Us</a>
+            </div>
+            <div class="footer-col" style="flex: 1; min-width: 150px;">
+                <h4>Contact</h4>
+                <p style="margin-bottom:10px;">📍 123 Culinary Hub, IND</p>
+                <p style="margin-bottom:10px;">📞 +91 98765 43210</p>
+                <p style="margin-bottom:10px;">✉️ hello@savora.com</p>
+            </div>
+        </div>
+        <div class="container" style="margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px;">
+            <p>&copy; 2026 Savora Restaurant. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Automatic Infinite Carousel Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const track = document.getElementById('track');
+
+            if(track && track.children.length > 0) {
+                setInterval(() => {
+                    // Slide left by 100% smoothly
+                    track.style.transition = 'transform 0.8s ease-in-out';
+                    track.style.transform = 'translateX(-100%)';
+                    
+                    // After transition completes, move the first slide to the back quietly
+                    setTimeout(() => {
+                        track.style.transition = 'none'; // Disable animation instantly
+                        const firstSlide = track.firstElementChild;
+                        track.appendChild(firstSlide); // Moves it from front to back natively
+                        track.style.transform = 'translateX(0)'; // Reset position seamlessly
+                    }, 800); // 800ms strictly matches the transition duration above
+                }, 2800); // Triggers a slide every 2.8 seconds for a readable pace
+            }
+        });
+    </script>
+</body>
+</html>
