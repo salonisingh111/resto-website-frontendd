@@ -119,9 +119,49 @@
             </div>
         </section>
 
-        <!-- Features Section -->
+        <!-- Popular Menu Preview -->
         <section class="container gsap-fade-up section-margin-bottom">
-            <div style="background: var(--bg-surface); padding: 80px 40px; border-radius: var(--radius-lg); border: 1px solid var(--border-color);">
+            <div style="text-align: center; margin-bottom: 60px;">
+                <span class="hero-subtitle">Taste of India</span>
+                <h2 class="section-title">Explore Our Categories</h2>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px;">
+                <!-- Category Cards -->
+                <div class="category-card gsap-fade-up">
+                    <img src="https://images.pexels.com/photos/2474661/pexels-photo-2474661.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Starters">
+                    <div class="category-overlay">
+                        <h3>Starters</h3>
+                        <a href="menu.html?cat=starters" class="category-link">View Selection →</a>
+                    </div>
+                </div>
+                <div class="category-card gsap-fade-up">
+                    <img src="https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Mains">
+                    <div class="category-overlay">
+                        <h3>Main Course</h3>
+                        <a href="menu.html?cat=veg" class="category-link">View Selection →</a>
+                    </div>
+                </div>
+                <div class="category-card gsap-fade-up">
+                    <img src="https://images.pexels.com/photos/1279330/pexels-photo-1279330.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Biryani">
+                    <div class="category-overlay">
+                        <h3>Royal Biryani</h3>
+                        <a href="menu.html?cat=biryani" class="category-link">View Selection →</a>
+                    </div>
+                </div>
+                <div class="category-card gsap-fade-up">
+                    <img src="https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Desserts">
+                    <div class="category-overlay">
+                        <h3>Desserts</h3>
+                        <a href="menu.html?cat=desserts" class="category-link">View Selection →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section class="container gsap-fade-up section-margin-bottom">
+            <div style="background: var(--bg-surface); padding: 80px 40px; border-radius: var(--radius-lg); border: 1px solid var(--border-color); position: relative; overflow: hidden;">
+                <div style="position: absolute; top: -50px; right: -50px; width: 200px; height: 200px; background: radial-gradient(circle, rgba(212,175,55,0.1) 0%, transparent 70%);"></div>
                 <h2 class="section-title">The Savora Experience</h2>
                 <div class="luxury-menu-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
                     <div style="text-align: center; padding: 20px;">
@@ -130,7 +170,7 @@
                         <p style="color: var(--text-muted);">Authentic flavors preserved through generations of culinary tradition.</p>
                     </div>
                     <div style="text-align: center; padding: 20px;">
-                        <div style="color: var(--accent); font-size: 2.5rem; margin-bottom: 20px;">👨‍🍳</div>
+                        <div style="color: var(--accent); font-size: 2.5rem; margin-bottom: 20px;">👨‍Chef</div>
                         <h3 style="margin-bottom: 15px;">Master Chefs</h3>
                         <p style="color: var(--text-muted);">Expertly crafted by culinary artisans with a passion for perfection.</p>
                     </div>
@@ -212,9 +252,9 @@
                 <p style="margin-top: 20px; line-height: 1.8;">Elevating the heritage of authentic Indian cuisine through luxury, tradition, and impeccable taste.</p>
                 <div style="display: flex; gap: 20px; margin-top: 30px;">
                     <!-- Social Icons placeholders -->
-                    <span style="color: var(--accent); cursor: pointer;">FB</span>
-                    <span style="color: var(--accent); cursor: pointer;">IG</span>
-                    <span style="color: var(--accent); cursor: pointer;">TW</span>
+                    <span style="color: var(--accent); cursor: pointer; font-size: 0.8rem; border: 1px solid rgba(212, 175, 55, 0.3); padding: 8px 12px; border-radius: var(--radius-full); transition: all 0.3s ease;" onmouseover="this.style.background='rgba(212,175,55,0.1)'" onmouseout="this.style.background='none'">INSTAGRAM</span>
+                    <span style="color: var(--accent); cursor: pointer; font-size: 0.8rem; border: 1px solid rgba(212, 175, 55, 0.3); padding: 8px 12px; border-radius: var(--radius-full); transition: all 0.3s ease;" onmouseover="this.style.background='rgba(212,175,55,0.1)'" onmouseout="this.style.background='none'">FACEBOOK</span>
+                    <span style="color: var(--accent); cursor: pointer; font-size: 0.8rem; border: 1px solid rgba(212, 175, 55, 0.3); padding: 8px 12px; border-radius: var(--radius-full); transition: all 0.3s ease;" onmouseover="this.style.background='rgba(212,175,55,0.1)'" onmouseout="this.style.background='none'">TWITTER</span>
                 </div>
             </div>
             <div class="footer-col">

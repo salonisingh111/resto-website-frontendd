@@ -139,13 +139,22 @@ button {
   position: fixed;
   top: 0;
   width: 100%;
-  background-color: rgba(10, 10, 11, 0.8);
-  backdrop-filter: blur(20px);
+  background-color: transparent;
+  backdrop-filter: blur(0px);
   z-index: 1000;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  padding: 20px 0;
-  transition: all 0.3s ease;
+  border-bottom: 1px solid transparent;
+  padding: 30px 0;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+.navbar.scrolled {
+  background-color: rgba(10, 10, 11, 0.9);
+  backdrop-filter: blur(20px);
+  padding: 15px 0;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
 
 .navbar .container {
   display: flex;
@@ -251,19 +260,25 @@ button {
 }
 
 .luxury-dish-card {
-  background: var(--bg-surface);
+  background: linear-gradient(135deg, rgba(28, 28, 30, 0.5), rgba(20, 20, 22, 0.5));
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border-radius: var(--radius-md);
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 .luxury-dish-card:hover {
-  transform: translateY(-10px);
-  border-color: rgba(212, 175, 55, 0.3);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  transform: translateY(-12px) scale(1.02);
+  border-color: rgba(212, 175, 55, 0.4);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+  background: linear-gradient(135deg, rgba(35, 35, 38, 0.8), rgba(25, 25, 28, 0.8));
 }
+
 
 .luxury-dish-card .img-container {
   width: 100%;
@@ -813,4 +828,86 @@ button {
   }
 }
 
+
+
+/* Category Cards */
+.category-card {
+  position: relative;
+  height: 400px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.category-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s ease;
+}
+
+.category-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 10%, transparent 60%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 40px;
+  transition: all 0.4s ease;
+}
+
+.category-card:hover {
+  transform: translateY(-10px);
+  border-color: var(--accent);
+}
+
+.category-card:hover img {
+  transform: scale(1.1);
+}
+
+.category-card h3 {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  margin-bottom: 15px;
+  color: #fff;
+}
+
+.category-link {
+  color: var(--accent);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.4s ease;
+}
+
+.category-card:hover .category-link {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section-margin {
+  margin-top: 150px;
+}
+
+.section-margin-bottom {
+  margin-bottom: 150px;
+}
+
+
+@media (max-width: 600px) {
+  .category-card {
+    height: 300px;
+  }
+  .category-overlay {
+    padding: 20px;
+  }
+  .category-card h3 {
+    font-size: 1.5rem;
+  }
+}
 

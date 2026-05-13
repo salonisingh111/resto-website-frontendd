@@ -42,13 +42,15 @@
         <div class="menu-tabs gsap-fade-up">
             <button class="tab-btn active" data-target="all">All Items</button>
             <button class="tab-btn" data-target="starters">Starters</button>
-            <button class="tab-btn" data-target="veg-main">Veg Main Course</button>
-            <button class="tab-btn" data-target="non-veg-main">Non-Veg Main Course</button>
+            <button class="tab-btn" data-target="veg">Veg</button>
+            <button class="tab-btn" data-target="non-veg">Non-Veg</button>
             <button class="tab-btn" data-target="biryani">Biryani</button>
+            <button class="tab-btn" data-target="tandoor">Tandoor</button>
             <button class="tab-btn" data-target="breads">Indian Breads</button>
             <button class="tab-btn" data-target="desserts">Desserts</button>
             <button class="tab-btn" data-target="drinks">Drinks</button>
         </div>
+
 
         <div class="luxury-menu-grid" id="menu-grid">
             <!-- Populated by JS -->
@@ -109,11 +111,7 @@
             grid.innerHTML = '';
             
             let filtered = productsDB;
-            if (filter === 'veg') {
-                filtered = productsDB.filter(p => p.type === 'veg');
-            } else if (filter === 'non-veg') {
-                filtered = productsDB.filter(p => p.type === 'non-veg');
-            } else if (filter !== 'all') {
+            if (filter !== 'all') {
                 filtered = productsDB.filter(p => p.category === filter);
             }
             
@@ -142,7 +140,7 @@
             if(window.gsap) {
                 gsap.fromTo('.luxury-dish-card', 
                     { y: 30, opacity: 0 }, 
-                    { y: 0, opacity: 1, duration: 0.5, stagger: 0.1, ease: "power2.out", clearProps: "all" }
+                    { y: 0, opacity: 1, duration: 0.5, stagger: 0.05, ease: "power2.out", clearProps: "all" }
                 );
             }
         }
@@ -156,6 +154,7 @@
         });
 
         renderMenu();
+
     </script>
 </body>
 </html>
