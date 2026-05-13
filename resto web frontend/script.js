@@ -1,40 +1,43 @@
 // Global Data Source for the entire application
+// Global Data Source for the entire application
 const productsDB = [
-    // Reliable Pexels Food Image Links
     // Starters
-    { id: 's1', category: 'starters', name: 'Samosa Chaat', price: 90, type: 'veg', calories: '320 kcal', img: 'https://images.pexels.com/photos/2474661/pexels-photo-2474661.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Crispy samosas crushed and topped with yogurt, tamarind chutney, and sev.' },
-    { id: 's2', category: 'starters', name: 'Paneer Tikka', price: 180, type: 'veg', calories: '400 kcal', img: 'https://images.pexels.com/photos/10580198/pexels-photo-10580198.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Cottage cheese cubes marinated in spiced yogurt and grilled in a clay oven.' },
-    { id: 's3', category: 'starters', name: 'Hara Bhara Kebab', price: 150, type: 'veg', calories: '250 kcal', img: 'https://images.pexels.com/photos/674574/pexels-photo-674574.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Healthy and delicious pan-fried spinach and green peas patties.' },
-    { id: 's4', category: 'starters', name: 'Chicken Tikka', price: 210, type: 'non-veg', calories: '450 kcal', img: 'https://images.pexels.com/photos/3928525/pexels-photo-3928525.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Succulent pieces of chicken marinated in fiery spices and roasted to perfection.' },
-    { id: 's5', category: 'starters', name: 'Mutton Seekh Kebab', price: 260, type: 'non-veg', calories: '550 kcal', img: 'https://images.pexels.com/photos/1633525/pexels-photo-1633525.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Minced lamb mixed with aromatic spices, skewered and grilled over charcoal.' },
+    { id: 's1', category: 'starters', name: 'Zaffrani Samosa Chaat', price: 120, type: 'veg', calories: '320 kcal', img: 'https://images.pexels.com/photos/2474661/pexels-photo-2474661.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Hand-crafted pastry filled with spiced potatoes, topped with saffron yogurt and tangy chutneys.' },
+    { id: 's2', category: 'starters', name: 'Tandoori Malai Paneer', price: 280, type: 'veg', calories: '400 kcal', img: 'https://images.pexels.com/photos/10580198/pexels-photo-10580198.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Creamy cottage cheese marinated in cardamom-infused yogurt, grilled to a smoky finish.' },
+    { id: 's3', category: 'starters', name: 'Hara Bhara Kebab', price: 240, type: 'veg', calories: '250 kcal', img: 'https://images.pexels.com/photos/674574/pexels-photo-674574.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Delicate patties of garden-fresh spinach and green peas, lightly spiced and pan-seared.' },
+    { id: 's4', category: 'starters', name: 'Angara Chicken Tikka', price: 350, type: 'non-veg', calories: '450 kcal', img: 'https://images.pexels.com/photos/3928525/pexels-photo-3928525.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Boneless chicken marinated in a fiery blend of Kashmiri chilies and aromatic spices.' },
+    { id: 's5', category: 'starters', name: 'Lucknowi Mutton Seekh', price: 420, type: 'non-veg', calories: '550 kcal', img: 'https://images.pexels.com/photos/1633525/pexels-photo-1633525.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Fine minced lamb infused with cloves and cinnamon, skewered and charred over charcoal.' },
     
-    // Mains - Veg
-    { id: 'm1', category: 'mains', name: 'Paneer Butter Masala', price: 240, type: 'veg', calories: '600 kcal', img: 'https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Rich and creamy curry made with paneer, tomatoes, cashews, and butter.' },
-    { id: 'm2', category: 'mains', name: 'Dal Makhani', price: 200, type: 'veg', calories: '450 kcal', img: 'https://images.pexels.com/photos/2611917/pexels-photo-2611917.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Slow-cooked black lentils and kidney beans enriched with cream and butter.' },
-    { id: 'm3', category: 'mains', name: 'Malai Kofta', price: 230, type: 'veg', calories: '580 kcal', img: 'https://images.pexels.com/photos/2090903/pexels-photo-2090903.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Potato and paneer dumplings deep-fried and served in a creamy, velvety sauce.' },
+    // Veg Main Course
+    { id: 'vm1', category: 'veg-main', name: 'Royal Paneer Lababdar', price: 380, type: 'veg', calories: '600 kcal', img: 'https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Soft paneer in a rich tomato-cashew gravy, finished with a touch of butter and dry fenugreek.' },
+    { id: 'vm2', category: 'veg-main', name: 'Dal Savora (Makhani)', price: 320, type: 'veg', calories: '450 kcal', img: 'https://images.pexels.com/photos/2611917/pexels-photo-2611917.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Black lentils slow-cooked for 24 hours, enriched with cream and churned white butter.' },
+    { id: 'vm3', category: 'veg-main', name: 'Kashmiri Malai Kofta', price: 360, type: 'veg', calories: '580 kcal', img: 'https://images.pexels.com/photos/2090903/pexels-photo-2090903.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Vegetable and nut dumplings simmered in a velvety onion-tomato gravy with exotic spices.' },
     
-    // Mains - Biryani
-    { id: 'm4', category: 'mains', name: 'Vegetable Biryani', price: 220, type: 'veg', calories: '500 kcal', img: 'https://images.pexels.com/photos/2456435/pexels-photo-2456435.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Fragrant basmati rice cooked with mixed vegetables and aromatic spices.' },
-    { id: 'm5', category: 'mains', name: 'Chicken Biryani', price: 280, type: 'non-veg', calories: '800 kcal', img: 'https://images.pexels.com/photos/1111122/pexels-photo-1111122.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Traditional dum biryani with tender chicken pieces, saffron, and rich spices.' },
-    { id: 'm6', category: 'mains', name: 'Mutton Dum Biryani', price: 340, type: 'non-veg', calories: '950 kcal', img: 'https://images.pexels.com/photos/1279330/pexels-photo-1279330.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Slow-cooked tender mutton and long-grain basmati rice scented with kewra.' },
+    // Non-Veg Main Course
+    { id: 'nvm1', category: 'non-veg-main', name: 'Old Delhi Butter Chicken', price: 480, type: 'non-veg', calories: '750 kcal', img: 'https://images.pexels.com/photos/33162/food-restaurant-menu-asia.jpg?auto=compress&cs=tinysrgb&w=800', desc: 'Tandoori chicken tikkas simmered in a creamy, mildly sweet tomato and butter sauce.' },
+    { id: 'nvm2', category: 'non-veg-main', name: 'Mutton Rogan Josh', price: 520, type: 'non-veg', calories: '820 kcal', img: 'https://images.pexels.com/photos/2098085/pexels-photo-2098085.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Traditional Kashmiri lamb curry cooked with alkanet root and intense aromatic spices.' },
+    { id: 'nvm3', category: 'non-veg-main', name: 'Kochi Prawn Curry', price: 550, type: 'non-veg', calories: '420 kcal', img: 'https://images.pexels.com/photos/674574/pexels-photo-674574.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Fresh prawns simmered in a coconut-based gravy with curry leaves and mustard seeds.' },
     
-    // Mains - Non-veg
-    { id: 'm7', category: 'mains', name: 'Butter Chicken', price: 290, type: 'non-veg', calories: '750 kcal', img: 'https://images.pexels.com/photos/33162/food-restaurant-menu-asia.jpg?auto=compress&cs=tinysrgb&w=800', desc: 'Classic Punjabi dish featuring roasted chicken simmered in a mildly spiced tomato gravy.' },
-    { id: 'm8', category: 'mains', name: 'Rogan Josh', price: 320, type: 'non-veg', calories: '820 kcal', img: 'https://images.pexels.com/photos/2098085/pexels-photo-2098085.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Signature Kashmiri lamb curry cooked with intense flavors of ginger, fennel, and red chilies.' },
+    // Biryani
+    { id: 'b1', category: 'biryani', name: 'Subz-e-Awadh Biryani', price: 340, type: 'veg', calories: '500 kcal', img: 'https://images.pexels.com/photos/2456435/pexels-photo-2456435.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Long-grain basmati rice cooked with seasonal vegetables and fragrant dum spices.' },
+    { id: 'b2', category: 'biryani', name: 'Hyderabadi Dum Murgh Biryani', price: 450, type: 'non-veg', calories: '800 kcal', img: 'https://images.pexels.com/photos/1111122/pexels-photo-1111122.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Tender chicken and rice slow-cooked in a sealed pot with saffron and fresh mint.' },
+    { id: 'b3', category: 'biryani', name: 'Nizami Mutton Dum Biryani', price: 580, type: 'non-veg', calories: '950 kcal', img: 'https://images.pexels.com/photos/1279330/pexels-photo-1279330.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Succulent lamb and aged basmati rice infused with secret spices and kewra water.' },
     
-    // Breads
-    { id: 'b1', category: 'breads', name: 'Garlic Naan', price: 50, type: 'veg', calories: '300 kcal', img: 'https://images.pexels.com/photos/236887/pexels-photo-236887.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Soft and fluffy Indian flatbread topped with minced garlic and butter.' },
-    { id: 'b2', category: 'breads', name: 'Butter Roti', price: 30, type: 'veg', calories: '150 kcal', img: 'https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Whole wheat flatbread baked in a tandoor and brushed with melted butter.' },
+    // Indian Breads
+    { id: 'br1', category: 'breads', name: 'Truffle Garlic Naan', price: 90, type: 'veg', calories: '300 kcal', img: 'https://images.pexels.com/photos/236887/pexels-photo-236887.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Classic naan topped with minced garlic, fresh coriander, and a hint of truffle oil.' },
+    { id: 'br2', category: 'breads', name: 'Laccha Paratha', price: 70, type: 'veg', calories: '250 kcal', img: 'https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Multi-layered whole wheat bread baked to a crispy, flaky perfection.' },
+    { id: 'br3', category: 'breads', name: 'Butter Tandoori Roti', price: 50, type: 'veg', calories: '180 kcal', img: 'https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Traditional whole wheat bread baked in a clay oven and glazed with butter.' },
     
     // Desserts
-    { id: 'd1', category: 'desserts', name: 'Gulab Jamun', price: 80, type: 'veg', calories: '400 kcal', img: 'https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Deep-fried milk solid spheres soaked in rose-flavored sugar syrup.' },
-    { id: 'd2', category: 'desserts', name: 'Rasmalai', price: 110, type: 'veg', calories: '350 kcal', img: 'https://images.pexels.com/photos/299347/pexels-photo-299347.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Soft cheese patties immersed in sweetened, thickened milk flavored with cardamom.' },
-    { id: 'd3', category: 'desserts', name: 'Gajar Ka Halwa', price: 90, type: 'veg', calories: '450 kcal', img: 'https://images.pexels.com/photos/1435904/pexels-photo-1435904.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Classic winter dessert made with grated carrots, milk, nuts, and ghee.' },
+    { id: 'd1', category: 'desserts', name: 'Kesari Gulab Jamun', price: 150, type: 'veg', calories: '400 kcal', img: 'https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Golden milk dumplings soaked in saffron-infused syrup, garnished with pistachios.' },
+    { id: 'd2', category: 'desserts', name: 'Rabri Rasmalai', price: 180, type: 'veg', calories: '350 kcal', img: 'https://images.pexels.com/photos/299347/pexels-photo-299347.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Poached cheese discs immersed in thick, cardamom-flavored milk and rabri.' },
+    { id: 'd3', category: 'desserts', name: 'Shahi Gajar Halwa', price: 160, type: 'veg', calories: '450 kcal', img: 'https://images.pexels.com/photos/1435904/pexels-photo-1435904.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Slow-cooked carrot pudding with pure ghee, khoya, and a wealth of dry fruits.' },
     
     // Drinks
-    { id: 'dr1', category: 'drinks', name: 'Sweet Lassi', price: 70, type: 'veg', calories: '250 kcal', img: 'https://images.pexels.com/photos/414555/pexels-photo-414555.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Refreshing traditional yogurt-based drink, sweetened and chilled.' },
-    { id: 'dr2', category: 'drinks', name: 'Masala Chai', price: 40, type: 'veg', calories: '120 kcal', img: 'https://images.pexels.com/photos/1055272/pexels-photo-1055272.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Aromatic Indian tea brewed with milk, ginger, cardamom, and special spices.' }
+    { id: 'dr1', category: 'drinks', name: 'Royal Saffron Lassi', price: 140, type: 'veg', calories: '250 kcal', img: 'https://images.pexels.com/photos/414555/pexels-photo-414555.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Thick, creamy yogurt drink blended with saffron, cardamom, and nuts.' },
+    { id: 'dr2', category: 'drinks', name: 'Masala Chai', price: 80, type: 'veg', calories: '120 kcal', img: 'https://images.pexels.com/photos/1055272/pexels-photo-1055272.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Strong Indian tea brewed with milk, ginger, and a house-special spice blend.' }
 ];
+
 
 // Global Cart State
 let cart = JSON.parse(localStorage.getItem('savora_cart')) || [];
@@ -91,9 +94,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (homeDishesContainer) {
         // Select 3 premium items (e.g., Paneer Butter Masala, Mutton Biryani, Garlic Naan)
         const topDishes = [
-            productsDB.find(p => p.id === 'm1'), // Paneer Butter Masala
-            productsDB.find(p => p.id === 'm6'), // Mutton Dum Biryani 
-            productsDB.find(p => p.id === 'b1')  // Garlic Naan
+            productsDB.find(p => p.id === 'nvm1'), // Butter Chicken
+            productsDB.find(p => p.id === 'b3'),   // Mutton Dum Biryani 
+            productsDB.find(p => p.id === 'vm1')   // Paneer Lababdar
         ];
 
         topDishes.forEach(p => {
@@ -101,13 +104,15 @@ document.addEventListener('DOMContentLoaded', () => {
             const card = document.createElement('div');
             card.className = 'luxury-dish-card gsap-fade-up';
             card.innerHTML = `
-                <img src="${p.img}" alt="${p.name}">
+                <div class="img-container">
+                    <img src="${p.img}" alt="${p.name}">
+                </div>
                 <div class="content">
                     <h3>${p.name}</h3>
                     <p>${p.desc}</p>
                     <div class="dish-footer">
                         <span class="dish-price">₹${p.price}</span>
-                        <button class="btn" onclick='addToCart(${JSON.stringify({id: p.id, name: p.name, price: p.price, image: p.img})})'>Order Now</button>
+                        <button class="btn" onclick='addToCart(${JSON.stringify({id: p.id, name: p.name, price: p.price, img: p.img})})'>Order Now</button>
                     </div>
                 </div>
             `;
