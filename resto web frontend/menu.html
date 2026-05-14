@@ -121,7 +121,7 @@
                 
                 card.innerHTML = `
                     <div class="img-container">
-                        <img src="${p.img}" alt="${p.name}">
+                        <img src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.onerror=null; this.src='https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=800';">
                     </div>
                     <div class="content">
                         <span class="veg-tag ${p.type}">${p.type.toUpperCase()}</span>
@@ -153,7 +153,20 @@
             });
         });
 
-        renderMenu();
+        // Check for category in URL to auto-select tab
+        const urlParams = new URLSearchParams(window.location.search);
+        const categoryParam = urlParams.get('cat');
+        
+        if (categoryParam) {
+            const targetTab = Array.from(tabs).find(t => t.getAttribute('data-target') === categoryParam);
+            if (targetTab) {
+                targetTab.click();
+            } else {
+                renderMenu();
+            }
+        } else {
+            renderMenu();
+        }
 
     </script>
 </body>
