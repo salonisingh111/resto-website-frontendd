@@ -1,6 +1,4 @@
 // Global Data Source for the entire application
-// Global Data Source for the entire application
-// Global Data Source for the entire application
 const productsDB = [
     // Starters
     { id: 's1', category: 'starters', name: 'Zaffrani Samosa Chaat', price: 160, type: 'veg', calories: '320 kcal', img: 'https://images.pexels.com/photos/2474661/pexels-photo-2474661.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Hand-crafted pastry filled with spiced potatoes, topped with saffron yogurt and tangy chutneys.' },
@@ -25,9 +23,6 @@ const productsDB = [
     { id: 'd2', category: 'desserts', name: 'Rabri Rasmalai', price: 220, type: 'veg', calories: '350 kcal', img: 'https://images.pexels.com/photos/299347/pexels-photo-299347.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Poached cheese discs immersed in thick, cardamom-flavored milk and rabri.' },
     { id: 'd3', category: 'desserts', name: 'Royal Saffron Lassi', price: 150, type: 'veg', calories: '250 kcal', img: 'https://images.pexels.com/photos/414555/pexels-photo-414555.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Thick, creamy yogurt drink blended with saffron, cardamom, and nuts.' }
 ];
-
-
-
 
 // Global Cart State
 let cart = JSON.parse(localStorage.getItem('savora_cart')) || [];
@@ -70,46 +65,8 @@ function addToCart(product) {
 }
 
 function processPayment() {
-    // Redirect to Checkout page according to user requirement
     window.location.href = 'cart.html';
 }
-
-function closePaymentModal() {
-    document.getElementById('payment-modal').classList.remove('active');
-}
-
-// Render Homepage Chef's Recommendations
-document.addEventListener('DOMContentLoaded', () => {
-    const homeDishesContainer = document.getElementById('homepage-dishes');
-    if (homeDishesContainer) {
-        // Select 3 premium items (e.g., Paneer Butter Masala, Mutton Biryani, Garlic Naan)
-                        const topDishes = [
-            productsDB.find(p => p.id === 'm1'), // Butter Chicken
-            productsDB.find(p => p.id === 'b2'),  // Mutton Dum Biryani 
-            productsDB.find(p => p.id === 'm3')   // Paneer Lababdar
-        ];
-
-        topDishes.forEach(p => {
-            if(!p) return;
-            const card = document.createElement('div');
-            card.className = 'luxury-dish-card gsap-fade-up';
-            card.innerHTML = `
-                <div class="img-container">
-                    <img src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.onerror=null; this.src='https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=800';">
-                </div>
-                <div class="content">
-                    <h3>${p.name}</h3>
-                    <p>${p.desc}</p>
-                    <div class="dish-footer">
-                        <span class="dish-price">₹${p.price}</span>
-                        <button class="btn" onclick='addToCart(${JSON.stringify({id: p.id, name: p.name, price: p.price, img: p.img})})'>Order Now</button>
-                    </div>
-                </div>
-            `;
-            homeDishesContainer.appendChild(card);
-        });
-    }
-});
 
 function updateQuantity(id, change) {
     const item = cart.find(i => i.id === id);
@@ -134,7 +91,7 @@ function showToast(message) {
     toast.style.position = 'fixed';
     toast.style.bottom = '20px';
     toast.style.right = '20px';
-    toast.style.backgroundColor = 'var(--text-dark)';
+    toast.style.backgroundColor = '#1c1c1e';
     toast.style.color = '#fff';
     toast.style.padding = '12px 24px';
     toast.style.borderRadius = '30px';
@@ -157,7 +114,7 @@ function showToast(message) {
     }, 3000);
 }
 
-// Mobile Menu Toggle
+// Global Initialization
 document.addEventListener('DOMContentLoaded', () => {
     updateCartCount();
 
@@ -168,23 +125,59 @@ document.addEventListener('DOMContentLoaded', () => {
         hamburger.addEventListener('click', () => {
             navLinks.classList.toggle('active');
         });
+
+        // Close menu when a link is clicked
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
     }
 
     // Navbar Scroll Effect
     window.addEventListener('scroll', () => {
         const nav = document.querySelector('.navbar');
-        if (window.scrollY > 50) {
-            nav.classList.add('scrolled');
-        } else {
-            nav.classList.remove('scrolled');
+        if (nav) {
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
         }
     });
 
+    // Render Homepage Chef's Recommendations
+    const homeDishesContainer = document.getElementById('homepage-dishes');
+    if (homeDishesContainer) {
+        const topDishes = [
+            productsDB.find(p => p.id === 'm1'),
+            productsDB.find(p => p.id === 'b2'),
+            productsDB.find(p => p.id === 'm3')
+        ];
 
-    // Initialize GSAP Animations if available
+        topDishes.forEach(p => {
+            if(!p) return;
+            const card = document.createElement('div');
+            card.className = 'luxury-dish-card gsap-fade-up';
+            card.innerHTML = `
+                <div class="img-container">
+                    <img src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.onerror=null; this.src='https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=800';">
+                </div>
+                <div class="content">
+                    <h3>${p.name}</h3>
+                    <p>${p.desc}</p>
+                    <div class="dish-footer">
+                        <span class="dish-price">₹${p.price}</span>
+                        <button class="btn" onclick='addToCart(${JSON.stringify({id: p.id, name: p.name, price: p.price, img: p.img})})'>Order Now</button>
+                    </div>
+                </div>
+            `;
+            homeDishesContainer.appendChild(card);
+        });
+    }
+
+    // Initialize GSAP Animations
     if (typeof gsap !== 'undefined') {
-        
-        // Register ScrollTrigger if available (for scroll animations)
         if (typeof ScrollTrigger !== 'undefined') {
             gsap.registerPlugin(ScrollTrigger);
 
@@ -202,16 +195,13 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // Hero Intro Animations (Homepage specific)
+        // Hero Intro Animations
         if (document.querySelector('.hero-left')) {
             gsap.from('.gsap-hero-left', { x: -50, opacity: 0, duration: 1, ease: "power3.out" });
             gsap.from('.gsap-hero-right', { x: 50, opacity: 0, duration: 1, ease: "power3.out", delay: 0.2 });
-            
-            // Floating Tags
             gsap.from('.gsap-float-1', { scale: 0, opacity: 0, duration: 0.6, ease: "back.out(1.7)", delay: 0.8 });
             gsap.from('.gsap-float-2', { scale: 0, opacity: 0, duration: 0.6, ease: "back.out(1.7)", delay: 1 });
 
-            // Continuous Floating Animation for Image Carousel
             if (document.getElementById('hero-carousel')) {
                 gsap.to('#hero-carousel', {
                     y: -15,
@@ -221,7 +211,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     ease: "sine.inOut"
                 });
             }
-            // Continuous Floating Animation for Tags
             gsap.to('.gsap-float-1', {
                 y: -8,
                 duration: 2,

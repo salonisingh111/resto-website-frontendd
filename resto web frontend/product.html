@@ -3,187 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Details | Savora</title>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    <title>Dish Details — Savora</title>
     <link rel="stylesheet" href="styles.css">
-    <style>
-        .product-section {
-            padding: 8rem 0 4rem;
-        }
-
-        .product-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: flex-start;
-        }
-
-        .product-img {
-            width: 100%;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            object-fit: cover;
-            max-height: 500px;
-        }
-
-        .product-info h1 {
-            font-size: 2.8rem;
-            color: var(--accent);
-            margin-bottom: 10px;
-        }
-
-        .product-meta {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 20px;
-            font-size: 0.9rem;
-            color: var(--text-muted);
-        }
-
-        .product-meta span {
-            background-color: var(--secondary-bg);
-            padding: 5px 10px;
-            border-radius: 4px;
-        }
-
-        .product-desc {
-            font-size: 1.1rem;
-            margin-bottom: 30px;
-            line-height: 1.8;
-        }
-
-        .product-price {
-            font-size: 2rem;
-            font-family: 'Playfair Display', serif;
-            font-weight: bold;
-            margin-bottom: 30px;
-        }
-
-        .add-to-cart-widget {
-            display: flex;
-            gap: 20px;
-            align-items: center;
-            margin-bottom: 40px;
-        }
-
-        .qty-selector {
-            display: flex;
-            align-items: center;
-            background-color: var(--secondary-bg);
-            border-radius: 4px;
-            overflow: hidden;
-            border: 1px solid var(--border-color);
-        }
-
-        .qty-btn {
-            background: none;
-            border: none;
-            color: var(--text-light);
-            width: 40px;
-            height: 48px;
-            font-size: 1.2rem;
-        }
-
-        .qty-btn:hover {
-            background-color: var(--primary-bg);
-        }
-
-        .qty-input {
-            width: 50px;
-            text-align: center;
-            background: none;
-            border: none;
-            color: var(--text-light);
-            font-size: 1.1rem;
-            font-weight: bold;
-            pointer-events: none;
-        }
-
-        .reviews {
-            margin-top: 5rem;
-            border-top: 1px solid var(--border-color);
-            padding-top: 3rem;
-        }
-
-        .review-card {
-            background-color: var(--secondary-bg);
-            padding: 25px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-        }
-        
-        .review-card .stars {
-            color: var(--accent);
-            margin-bottom: 10px;
-        }
-
-        @media (max-width: 768px) {
-            .product-container {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
 </head>
 <body>
 
     <!-- Navbar -->
     <nav class="navbar">
         <div class="container">
-            <a href="index.html" class="brand">Savora.</a>
+            <a href="index.html" class="brand">SAVORA<span>.</span></a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="reservation.html">Reservations</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li>
+                    <a href="cart.html" class="cart-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                        <span class="cart-count">0</span>
+                    </a>
+                </li>
+            </ul>
             <button class="hamburger">☰</button>
-            <div class="nav-links">
-                <a href="index.html">Home</a>
-                <a href="menu.html">Menu</a>
-                <a href="about.html">About</a>
-                <a href="cart.html" class="cart-icon">🛒 <span class="cart-count">0</span></a>
-            </div>
         </div>
     </nav>
 
-    <section class="product-section container">
-        <div class="product-container" id="product-container">
+    <header class="page-header gsap-fade-up">
+        <div class="container">
+            <span class="hero-subtitle">Detailed View</span>
+            <h1 class="section-title" style="margin-bottom: 0;">Dish Perfection</h1>
+        </div>
+    </header>
+
+    <section class="section-padding container">
+        <div class="grid-2" id="product-container" style="gap: clamp(40px, 8vw, 80px); align-items: start;">
             <!-- Rendered via JS -->
             <div style="height: 500px; display:flex; align-items:center; justify-content:center;">Loading...</div>
         </div>
 
-        <div class="reviews gsap-fade-up">
-            <h2 class="section-title" style="text-align: left; margin-bottom: 2rem;">Customer Reviews</h2>
-            <div class="review-card">
-                <div class="stars">★★★★★</div>
-                <h4>Absolutely Divine</h4>
-                <p style="color: var(--text-muted); margin-top: 10px;">"The quality of ingredients really shines through. Worth every penny."</p>
-                <small style="color: var(--text-muted); display: block; margin-top: 10px;">- Jonathan D.</small>
-            </div>
-            <div class="review-card">
-                <div class="stars">★★★★☆</div>
-                <h4>Great taste, excellent presentation</h4>
-                <p style="color: var(--text-muted); margin-top: 10px;">"Delivered perfectly to my home. A truly premium online ordering experience."</p>
-                <small style="color: var(--text-muted); display: block; margin-top: 10px;">- Sarah M.</small>
+        <div class="reviews gsap-fade-up" style="margin-top: 80px; border-top: 1px solid var(--border-color); padding-top: 60px;">
+            <h2 style="font-family: var(--font-display); font-size: 2rem; margin-bottom: 40px;">Guest Experiences</h2>
+            <div class="grid-2" style="gap: 30px;">
+                <div class="glass" style="padding: 30px; border-radius: var(--radius-md);">
+                    <div style="color: var(--accent); margin-bottom: 15px;">★★★★★</div>
+                    <h4 style="margin-bottom: 10px;">Absolutely Divine</h4>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">"The quality of ingredients really shines through. Worth every penny."</p>
+                    <small style="color: var(--text-muted); display: block; margin-top: 20px; font-weight: 600;">— JONATHAN D.</small>
+                </div>
+                <div class="glass" style="padding: 30px; border-radius: var(--radius-md);">
+                    <div style="color: var(--accent); margin-bottom: 15px;">★★★★☆</div>
+                    <h4 style="margin-bottom: 10px;">Great taste & presentation</h4>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">"Delivered perfectly to my home. A truly premium online ordering experience."</p>
+                    <small style="color: var(--text-muted); display: block; margin-top: 20px; font-weight: 600;">— SARAH M.</small>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container footer-content">
-            <div class="footer-col">
-                <h2 class="brand">Savora.</h2>
-                <p>Taste the extraordinary.</p>
+        <div class="container footer-grid">
+            <div class="footer-col about-col">
+                <a href="index.html" class="brand">SAVORA<span>.</span></a>
+                <p>Elevating the heritage of authentic Indian cuisine through luxury, tradition, and impeccable taste.</p>
+                <div class="social-links">
+                    <span class="social-tag">INSTAGRAM</span>
+                    <span class="social-tag">FACEBOOK</span>
+                    <span class="social-tag">TWITTER</span>
+                </div>
             </div>
             <div class="footer-col">
-                <h4>Explore</h4>
+                <h4>Quick Exploration</h4>
                 <a href="index.html">Home</a>
-                <a href="menu.html">Menu</a>
-                <a href="about.html">About Us</a>
+                <a href="menu.html">The Menu</a>
+                <a href="reservation.html">Reservations</a>
+                <a href="about.html">Our Story</a>
             </div>
             <div class="footer-col">
-                <h4>Contact</h4>
-                <p>123 Culinary Blvd, NY</p>
-                <p>hello@savora.com</p>
-                <p>+1 (555) 123-4567</p>
+                <h4>Dining Hours</h4>
+                <p>Mon - Fri: 12:00 PM - 11:00 PM</p>
+                <p>Sat - Sun: 11:00 AM - 12:00 AM</p>
+            </div>
+            <div class="footer-col contact-col">
+                <h4>Connect</h4>
+                <p>📍 123 Luxury Hub, South Delhi, IND</p>
+                <p>📞 +91 98765 43210</p>
+                <p>✉️ royal@savora.com</p>
             </div>
         </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2026 Savora Luxury Dining. All rights reserved.</p>
+        </div>
     </footer>
+
+    <!-- Floating Cart -->
+    <div id="floating-cart" class="floating-cart-bar">
+        <div class="cart-info-flex">
+            <span style="font-size: 1.5rem;">🛍️</span>
+            <div>
+                <div style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em;">Your Order (<span id="float-cart-count">0</span>)</div>
+                <div class="cart-total-price">₹<span id="float-cart-total">0</span></div>
+            </div>
+        </div>
+        <button class="btn" onclick="processPayment()">View Order</button>
+    </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="script.js"></script>
@@ -199,28 +123,34 @@
             const container = document.getElementById('product-container');
             container.innerHTML = `
                 <div class="gsap-fade-up">
-                    <img src="${product.img}" alt="${product.name}" class="product-img">
+                    <div class="glass" style="padding: 15px; border-radius: var(--radius-lg);">
+                        <img src="${product.img}" alt="${product.name}" style="width: 100%; border-radius: var(--radius-md); object-fit: cover; max-height: clamp(300px, 50vh, 500px);">
+                    </div>
                 </div>
                 <div class="product-info gsap-fade-up" style="transition-delay: 0.2s">
-                    <h1>${product.name}</h1>
-                    <div class="product-meta">
-                        <span>🔥 ${product.calories}</span>
-                        <span>🥗 ${product.type}</span>
+                    <span class="hero-subtitle">${product.type}</span>
+                    <h1 style="font-size: clamp(2rem, 5vw, 3rem); color: var(--accent); margin-bottom: 20px; font-family: var(--font-display);">${product.name}</h1>
+                    <div style="display: flex; gap: 15px; margin-bottom: 30px;">
+                        <span style="background: rgba(255,255,255,0.05); padding: 5px 15px; border-radius: var(--radius-full); font-size: 0.8rem; color: var(--text-muted);">🔥 ${product.calories}</span>
+                        <span style="background: rgba(255,255,255,0.05); padding: 5px 15px; border-radius: var(--radius-full); font-size: 0.8rem; color: var(--text-muted);">⭐ 4.9 Rating</span>
                     </div>
-                    <p class="product-desc">${product.desc}</p>
-                    <div class="product-price">₹${product.price}</div>
+                    <p style="font-size: 1.1rem; line-height: 1.8; color: var(--text-muted); margin-bottom: 30px;">${product.desc}</p>
+                    <div style="font-size: 2.5rem; font-family: var(--font-display); font-weight: 700; margin-bottom: 40px;">₹${product.price}</div>
                     
-                    <div class="add-to-cart-widget">
-                        <div class="qty-selector">
-                            <button class="qty-btn" onclick="updateLocalQty(-1)">-</button>
-                            <input type="text" class="qty-input" id="curr-qty" value="${qty}">
-                            <button class="qty-btn" onclick="updateLocalQty(1)">+</button>
+                    <div style="display: flex; gap: 20px; align-items: center; margin-bottom: 40px; flex-wrap: wrap;">
+                        <div style="display: flex; align-items: center; background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); border-radius: var(--radius-md); overflow: hidden;">
+                            <button onclick="updateLocalQty(-1)" style="width: 50px; height: 50px; background: none; border: none; color: #fff; cursor: pointer; font-size: 1.2rem;">-</button>
+                            <input type="text" id="curr-qty" value="${qty}" readonly style="width: 50px; text-align: center; background: none; border: none; color: #fff; font-size: 1.1rem; font-weight: 700;">
+                            <button onclick="updateLocalQty(1)" style="width: 50px; height: 50px; background: none; border: none; color: #fff; cursor: pointer; font-size: 1.2rem;">+</button>
                         </div>
-                        <button class="btn" style="padding: 15px 40px; font-size: 1.1rem;" onclick="addCurrentToCart()">Add to Cart 🛒</button>
+                        <button class="btn" style="padding: 15px 40px; font-size: 1.1rem; flex: 1; min-width: 200px;" onclick="addCurrentToCart()">Add to Cart 🛒</button>
                     </div>
                     
-                    <hr style="border: none; border-top: 1px solid var(--border-color); margin-bottom: 20px;">
-                    <p style="color: var(--text-muted); font-size: 0.9rem;">* Contains allergens. Please let us know of any dietary requirements.</p>
+                    <div style="padding-top: 30px; border-top: 1px solid var(--border-color);">
+                        <p style="color: var(--text-muted); font-size: 0.85rem; display: flex; align-items: center; gap: 10px;">
+                            <span>ℹ️</span> Contains allergens. Please let us know of any dietary requirements.
+                        </p>
+                    </div>
                 </div>
             `;
         }
