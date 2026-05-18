@@ -229,3 +229,124 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 });
+
+// ─── Canvas Particle Background ───────────────────────────────────────────
+(function () {
+    document.addEventListener('DOMContentLoaded', () => {
+        const canvas = document.getElementById('bg-canvas');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        const PARTICLE_COUNT = 60;
+
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resize();
+        window.addEventListener('resize', resize);
+
+        function rand(min, max) { return Math.random() * (max - min) + min; }
+
+        class Particle {
+            constructor() { this.reset(); }
+            reset() {
+                this.x = rand(0, canvas.width);
+                this.y = rand(0, canvas.height);
+                this.r = rand(1, 3);
+                this.alpha = rand(0.1, 0.5);
+                this.vx = rand(-0.3, 0.3);
+                this.vy = rand(-0.5, -0.1);
+                this.color = Math.random() > 0.5 ? '212,175,55' : '255,160,60';
+            }
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                this.alpha -= 0.001;
+                if (this.alpha <= 0 || this.y < -10) this.reset();
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(${this.color},${this.alpha})`;
+                ctx.fill();
+            }
+        }
+
+        for (let i = 0; i < PARTICLE_COUNT; i++) particles.push(new Particle());
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => { p.update(); p.draw(); });
+            requestAnimationFrame(animate);
+        }
+        animate();
+    });
+})();
+
+// ─── Scroll Progress Bar & Scroll To Top ──────────────────────────────────
+window.addEventListener('scroll', function () {
+    const bar = document.getElementById('scroll-progress');
+    if (bar) {
+        const scrolled = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+        bar.style.width = scrolled + '%';
+    }
+    
+    const topBtn = document.getElementById('scroll-top-btn');
+    if (topBtn) {
+        topBtn.classList.toggle('visible', window.scrollY > 400);
+    }
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const topBtn = document.getElementById('scroll-top-btn');
+    if (topBtn) {
+        topBtn.addEventListener('click', function () {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+});
+
+// ─── Hero Carousel ────────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+    const track = document.getElementById('track');
+    if (track) {
+        setInterval(() => {
+            track.style.transition = 'transform 1.2s cubic-bezier(0.65,0,0.35,1)';
+            track.style.transform = 'translateX(-100%)';
+            setTimeout(() => {
+                track.style.transition = 'none';
+                track.appendChild(track.firstElementChild);
+                track.style.transform = 'translateX(0)';
+            }, 1200);
+        }, 4000);
+    }
+});
+
+// ─── Stats Counter ────────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+    function animateCounter(el) {
+        const target = +el.dataset.target;
+        const duration = 2000;
+        const step = target / (duration / 16);
+        let current = 0;
+        const timer = setInterval(() => {
+            current += step;
+            if (current >= target) { current = target; clearInterval(timer); }
+            el.textContent = target >= 1000 ? Math.floor(current / 1000) + 'K' : Math.floor(current);
+        }, 16);
+    }
+
+    const counters = document.querySelectorAll('.stat-num');
+    if (counters.length > 0) {
+        const counterObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounter(entry.target);
+                    counterObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        counters.forEach(c => counterObserver.observe(c));
+    }
+});
