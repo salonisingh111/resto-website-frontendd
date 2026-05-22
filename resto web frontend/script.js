@@ -184,6 +184,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    document.querySelectorAll('a[href*="menu.html"]').forEach((link) => {
+        link.addEventListener('click', () => {
+            sessionStorage.setItem('savora_menu_open_allowed', 'true');
+        });
+    });
+
     // Navbar Scroll Effect
     window.addEventListener('scroll', () => {
         const nav = document.querySelector('.navbar');
