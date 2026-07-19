@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dish Details — Savora</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Scroll Progress Bar -->
+    <div id="scroll-progress" class="scroll-progress-bar"></div>
+
+    <!-- Animated Canvas Background -->
+    <canvas id="bg-canvas" class="bg-canvas"></canvas>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="brand">SAVORA<span>.</span></a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="reservation.html">Reservations</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li>
+                    <a href="cart.html" class="cart-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                        <span class="cart-count">0</span>
+                    </a>
+                </li>
+            </ul>
+            <button class="hamburger">☰</button>
+        </div>
+    </nav>
+
+    <header class="page-header gsap-fade-up">
+        <div class="container">
+            <span class="hero-subtitle">Detailed View</span>
+            <h1 class="section-title" style="margin-bottom: 0;">Dish Perfection</h1>
+        </div>
+    </header>
+
+    <section class="section-padding container">
+        <div class="grid-2" id="product-container" style="gap: clamp(40px, 8vw, 80px); align-items: start;">
+            <!-- Rendered via JS -->
+            <div style="height: 500px; display:flex; align-items:center; justify-content:center;">Loading...</div>
+        </div>
+
+        <div class="reviews gsap-fade-up" style="margin-top: 80px; border-top: 1px solid var(--border-color); padding-top: 60px;">
+            <h2 style="font-family: var(--font-display); font-size: 2rem; margin-bottom: 40px;">Guest Experiences</h2>
+            <div class="grid-2" style="gap: 30px;">
+                <div class="glass" style="padding: 30px; border-radius: var(--radius-md);">
+                    <div style="color: var(--accent); margin-bottom: 15px;">★★★★★</div>
+                    <h4 style="margin-bottom: 10px;">Absolutely Divine</h4>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">"The quality of ingredients really shines through. Worth every penny."</p>
+                    <small style="color: var(--text-muted); display: block; margin-top: 20px; font-weight: 600;">— JONATHAN D.</small>
+                </div>
+                <div class="glass" style="padding: 30px; border-radius: var(--radius-md);">
+                    <div style="color: var(--accent); margin-bottom: 15px;">★★★★☆</div>
+                    <h4 style="margin-bottom: 10px;">Great taste & presentation</h4>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">"Delivered perfectly to my home. A truly premium online ordering experience."</p>
+                    <small style="color: var(--text-muted); display: block; margin-top: 20px; font-weight: 600;">— SARAH M.</small>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scroll To Top -->
+    <button id="scroll-top-btn" class="scroll-top-btn" aria-label="Back to top">↑</button>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-col about-col">
+                <a href="index.html" class="brand">SAVORA<span>.</span></a>
+                <p>Elevating the heritage of authentic Indian cuisine through luxury, tradition, and impeccable taste.</p>
+                <div class="social-links">
+                    <span class="social-tag">INSTAGRAM</span>
+                    <span class="social-tag">FACEBOOK</span>
+                    <span class="social-tag">TWITTER</span>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Exploration</h4>
+                <a href="index.html">Home</a>
+                <a href="menu.html">The Menu</a>
+                <a href="reservation.html">Reservations</a>
+                <a href="about.html">Our Story</a>
+            </div>
+            <div class="footer-col">
+                <h4>Dining Hours</h4>
+                <p>Mon - Fri: 12:00 PM - 11:00 PM</p>
+                <p>Sat - Sun: 11:00 AM - 12:00 AM</p>
+            </div>
+            <div class="footer-col contact-col">
+                <h4>Connect</h4>
+                <p>📍 123 Luxury Hub, South Delhi, IND</p>
+                <p>📞 +91 98765 43210</p>
+                <p>✉️ royal@savora.com</p>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2026 Savora Luxury Dining. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Floating Cart -->
+    <div id="floating-cart" class="floating-cart-bar">
+        <div class="cart-info-flex">
+            <span style="font-size: 1.5rem;">🛍️</span>
+            <div>
+                <div style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em;">Your Order (<span id="float-cart-count">0</span>)</div>
+                <div class="cart-total-price">₹<span id="float-cart-total">0</span></div>
+            </div>
+        </div>
+        <button class="btn" onclick="processPayment()">View Order</button>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        let productId = params.get('id') || 'm1'; // Default to m1 if none provided
+        // Use global productsDB from script.js
+        const product = productsDB.find(p => p.id === productId) || productsDB.find(p => p.id === 'm1');
+
+        let qty = 1;
+
+        function renderProduct() {
+            const container = document.getElementById('product-container');
+            container.innerHTML = `
+                <div class="gsap-fade-up">
+                    <div class="glass" style="padding: 15px; border-radius: var(--radius-lg);">
+                        <img src="${product.img}" alt="${product.name}" style="width: 100%; border-radius: var(--radius-md); object-fit: cover; max-height: clamp(300px, 50vh, 500px);">
+                    </div>
+                </div>
+                <div class="product-info gsap-fade-up" style="transition-delay: 0.2s">
+                    <span class="hero-subtitle">${product.type}</span>
+                    <h1 style="font-size: clamp(2rem, 5vw, 3rem); color: var(--accent); margin-bottom: 20px; font-family: var(--font-display);">${product.name}</h1>
+                    <div style="display: flex; gap: 15px; margin-bottom: 30px;">
+                        <span style="background: rgba(255,255,255,0.05); padding: 5px 15px; border-radius: var(--radius-full); font-size: 0.8rem; color: var(--text-muted);">🔥 ${product.calories}</span>
+                        <span style="background: rgba(255,255,255,0.05); padding: 5px 15px; border-radius: var(--radius-full); font-size: 0.8rem; color: var(--text-muted);">⭐ 4.9 Rating</span>
+                    </div>
+                    <p style="font-size: 1.1rem; line-height: 1.8; color: var(--text-muted); margin-bottom: 30px;">${product.desc}</p>
+                    <div style="font-size: 2.5rem; font-family: var(--font-display); font-weight: 700; margin-bottom: 40px;">₹${product.price}</div>
+                    
+                    <div style="display: flex; gap: 20px; align-items: center; margin-bottom: 40px; flex-wrap: wrap;">
+                        <div style="display: flex; align-items: center; background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); border-radius: var(--radius-md); overflow: hidden;">
+                            <button onclick="updateLocalQty(-1)" style="width: 50px; height: 50px; background: none; border: none; color: #fff; cursor: pointer; font-size: 1.2rem;">-</button>
+                            <input type="text" id="curr-qty" value="${qty}" readonly style="width: 50px; text-align: center; background: none; border: none; color: #fff; font-size: 1.1rem; font-weight: 700;">
+                            <button onclick="updateLocalQty(1)" style="width: 50px; height: 50px; background: none; border: none; color: #fff; cursor: pointer; font-size: 1.2rem;">+</button>
+                        </div>
+                        <button class="btn" style="padding: 15px 40px; font-size: 1.1rem; flex: 1; min-width: 200px;" onclick="addCurrentToCart()">Add to Cart 🛒</button>
+                    </div>
+                    
+                    <div style="padding-top: 30px; border-top: 1px solid var(--border-color);">
+                        <p style="color: var(--text-muted); font-size: 0.85rem; display: flex; align-items: center; gap: 10px;">
+                            <span>ℹ️</span> Contains allergens. Please let us know of any dietary requirements.
+                        </p>
+                    </div>
+                </div>
+            `;
+        }
+
+        function updateLocalQty(change) {
+            if (qty + change >= 1) {
+                qty += change;
+                document.getElementById('curr-qty').value = qty;
+            }
+        }
+
+        function addCurrentToCart() {
+            addToCart({
+                id: productId,
+                name: product.name,
+                price: product.price,
+                image: product.img,
+                quantity: qty
+            });
+        }
+
+        renderProduct();
+    </script>
+</body>
+</html>

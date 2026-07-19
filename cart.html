@@ -9,6 +9,12 @@
 </head>
 <body>
 
+    <!-- Scroll Progress Bar -->
+    <div id="scroll-progress" class="scroll-progress-bar"></div>
+
+    <!-- Animated Canvas Background -->
+    <canvas id="bg-canvas" class="bg-canvas"></canvas>
+
     <!-- Navbar -->
     <nav class="navbar">
         <div class="container">
@@ -38,11 +44,11 @@
         </div>
     </header>
 
-    <section class="container" style="padding: 80px 0;">
-        <div style="display: grid; grid-template-columns: 1.5fr 1fr; gap: 60px;">
+    <section class="container section-padding">
+        <div class="grid-2" style="gap: clamp(40px, 8vw, 60px);">
             
             <div class="gsap-fade-up">
-                <div style="background: var(--bg-surface); padding: 40px; border-radius: var(--radius-lg); border: 1px solid var(--border-color);">
+                <div class="glass" style="padding: clamp(20px, 5vw, 40px); border-radius: var(--radius-lg);">
                     <h2 style="font-size: 1.8rem; margin-bottom: 30px; font-family: var(--font-display);">Review Order</h2>
                     <div id="cart-items">
                         <!-- Items populated by JS -->
@@ -51,7 +57,7 @@
             </div>
 
             <div class="gsap-fade-up">
-                <div style="background: var(--bg-surface); padding: 40px; border-radius: var(--radius-lg); border: 1px solid var(--border-color);">
+                <div class="glass" style="padding: clamp(20px, 5vw, 40px); border-radius: var(--radius-lg);">
                     <h2 style="font-size: 1.8rem; margin-bottom: 30px; font-family: var(--font-display);">Summary</h2>
                     
                     <div id="cart-summary">
@@ -72,19 +78,19 @@
                     <form id="checkout-form-elem" onsubmit="event.preventDefault(); submitOrder();">
                         <h3 style="font-size: 1.1rem; margin-bottom: 25px; text-transform: uppercase; letter-spacing: 0.1em;">Delivery Details</h3>
                         
-                        <div class="form-group" style="margin-bottom: 20px;">
-                            <label style="display: block; font-size: 0.8rem; color: var(--text-muted); margin-bottom: 8px;">Contact Name</label>
-                            <input type="text" required placeholder="John Doe" style="width: 100%; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); padding: 15px; border-radius: var(--radius-sm); color: #fff; outline: none;">
+                        <div class="form-group">
+                            <label>Contact Name</label>
+                            <input type="text" class="form-control" required placeholder="John Doe">
                         </div>
 
-                        <div class="form-group" style="margin-bottom: 20px;">
-                            <label style="display: block; font-size: 0.8rem; color: var(--text-muted); margin-bottom: 8px;">Address</label>
-                            <textarea rows="3" required placeholder="Street, City, Pincode" style="width: 100%; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); padding: 15px; border-radius: var(--radius-sm); color: #fff; outline: none; resize: none;"></textarea>
+                        <div class="form-group">
+                            <label>Address</label>
+                            <textarea class="form-control" rows="3" required placeholder="Street, City, Pincode" style="resize: none;"></textarea>
                         </div>
 
-                        <div class="form-group" style="margin-bottom: 30px;">
-                            <label style="display: block; font-size: 0.8rem; color: var(--text-muted); margin-bottom: 8px;">Payment Method</label>
-                            <select required style="width: 100%; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); padding: 15px; border-radius: var(--radius-sm); color: #fff; outline: none; appearance: none;">
+                        <div class="form-group">
+                            <label>Payment Method</label>
+                            <select class="form-control" required>
                                 <option value="card">Credit / Debit Card</option>
                                 <option value="upi">UPI / Net Banking</option>
                                 <option value="cod">Cash on Delivery</option>
@@ -99,12 +105,20 @@
         </div>
     </section>
 
+    <!-- Scroll To Top -->
+    <button id="scroll-top-btn" class="scroll-top-btn" aria-label="Back to top">↑</button>
+
     <!-- Footer -->
     <footer class="footer">
-        <div class="container" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:60px; text-align:left;">
-            <div class="footer-col">
+        <div class="container footer-grid">
+            <div class="footer-col about-col">
                 <a href="index.html" class="brand">SAVORA<span>.</span></a>
-                <p style="margin-top: 20px; line-height: 1.8;">Elevating the heritage of authentic Indian cuisine through luxury, tradition, and impeccable taste.</p>
+                <p>Elevating the heritage of authentic Indian cuisine through luxury, tradition, and impeccable taste.</p>
+                <div class="social-links">
+                    <span class="social-tag">INSTAGRAM</span>
+                    <span class="social-tag">FACEBOOK</span>
+                    <span class="social-tag">TWITTER</span>
+                </div>
             </div>
             <div class="footer-col">
                 <h4>Quick Exploration</h4>
@@ -118,25 +132,25 @@
                 <p>Mon - Fri: 12:00 PM - 11:00 PM</p>
                 <p>Sat - Sun: 11:00 AM - 12:00 AM</p>
             </div>
-            <div class="footer-col">
+            <div class="footer-col contact-col">
                 <h4>Connect</h4>
                 <p>📍 123 Luxury Hub, South Delhi, IND</p>
                 <p>📞 +91 98765 43210</p>
                 <p>✉️ royal@savora.com</p>
             </div>
         </div>
-        <div class="container" style="margin-top: 80px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 30px; text-align: center;">
-            <p style="font-size: 0.85rem; color: var(--text-muted);">&copy; 2026 Savora Luxury Dining. All rights reserved.</p>
+        <div class="container footer-bottom">
+            <p>&copy; 2026 Savora Luxury Dining. All rights reserved.</p>
         </div>
     </footer>
 
     <!-- Floating Cart -->
     <div id="floating-cart" class="floating-cart-bar">
-        <div class="cart-info-flex" style="display: flex; align-items: center; gap: 15px;">
+        <div class="cart-info-flex">
             <span style="font-size: 1.5rem;">🛍️</span>
             <div>
                 <div style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em;">Your Order (<span id="float-cart-count">0</span>)</div>
-                <div class="cart-total-price" style="font-size: 1.2rem; font-weight: 700; color: var(--accent);">₹<span id="float-cart-total">0</span></div>
+                <div class="cart-total-price">₹<span id="float-cart-total">0</span></div>
             </div>
         </div>
         <button class="btn" onclick="processPayment()">View Order</button>
@@ -170,22 +184,22 @@
             cart.forEach(item => {
                 subtotal += item.price * item.quantity;
                 const div = document.createElement('div');
-                div.style.cssText = 'display: flex; align-items: center; justify-content: space-between; padding: 25px 0; border-bottom: 1px solid var(--border-color);';
+                div.style.cssText = 'display: flex; align-items: center; justify-content: space-between; padding: 25px 0; border-bottom: 1px solid var(--border-color); flex-wrap: wrap; gap: 20px;';
                 div.innerHTML = `
-                    <div style="display: flex; align-items: center; gap: 20px;">
-                        <img src="${item.img || item.image}" alt="${item.name}" style="width: 70px; height: 70px; border-radius: var(--radius-sm); object-fit: cover;">
+                    <div style="display: flex; align-items: center; gap: clamp(10px, 3vw, 20px); min-width: 200px;">
+                        <img src="${item.img || item.image}" alt="${item.name}" style="width: 60px; height: 60px; border-radius: var(--radius-sm); object-fit: cover;">
                         <div>
-                            <h4 style="font-family: var(--font-display); font-size: 1.1rem; margin-bottom: 5px;">${item.name}</h4>
-                            <p style="color: var(--accent); font-weight: 600;">₹${item.price}</p>
+                            <h4 style="font-family: var(--font-display); font-size: 1rem; margin-bottom: 5px;">${item.name}</h4>
+                            <p style="color: var(--accent); font-weight: 600; font-size: 0.9rem;">₹${item.price}</p>
                         </div>
                     </div>
-                    <div style="display: flex; align-items: center; gap: 30px;">
+                    <div style="display: flex; align-items: center; gap: clamp(20px, 5vw, 40px); justify-content: space-between; flex: 1;">
                         <div style="display: flex; align-items: center; gap: 15px; background: rgba(255,255,255,0.03); padding: 5px 15px; border-radius: var(--radius-full); border: 1px solid rgba(255,255,255,0.1);">
                             <button onclick="updateQuantity('${item.id}', -1)" style="background: none; border: none; color: #fff; cursor: pointer; font-size: 1.2rem;">-</button>
                             <span style="font-weight: 600; min-width: 20px; text-align: center;">${item.quantity}</span>
                             <button onclick="updateQuantity('${item.id}', 1)" style="background: none; border: none; color: #fff; cursor: pointer; font-size: 1.2rem;">+</button>
                         </div>
-                        <p style="font-weight: 700; width: 80px; text-align: right;">₹${item.price * item.quantity}</p>
+                        <p style="font-weight: 700; text-align: right; min-width: 80px;">₹${item.price * item.quantity}</p>
                     </div>
                 `;
                 container.appendChild(div);
